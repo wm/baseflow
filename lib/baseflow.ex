@@ -9,7 +9,7 @@ defmodule Baseflow do
     # Define workers and child supervisors to be supervised
     children = [
       # Start the Ecto repository
-      # supervisor(Baseflow.Repo, []),
+      supervisor(Baseflow.Repo, []),
       # Start the endpoint when the application starts
       supervisor(Baseflow.Endpoint, []),
       supervisor(Baseflow.Chatter.Supervisor, []),

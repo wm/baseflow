@@ -12,8 +12,7 @@ config :logger, level: :warn
 # Configure your database
 config :baseflow, Baseflow.Repo,
   adapter: Ecto.Adapters.Postgres,
-  username: "postgres",
-  password: "postgres",
   database: "baseflow_test",
   hostname: "localhost",
+  port: "15432",
   pool: Ecto.Adapters.SQL.Sandbox

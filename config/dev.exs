@@ -36,8 +36,7 @@ config :phoenix, :stacktrace_depth, 20
 # Configure your database
 config :baseflow, Baseflow.Repo,
   adapter: Ecto.Adapters.Postgres,
-  username: "postgres",
-  password: "postgres",
   database: "baseflow_dev",
   hostname: "localhost",
+  port: "15432",
   pool_size: 10
