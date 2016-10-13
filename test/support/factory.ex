@@ -5,7 +5,7 @@ defmodule Baseflow.Factory do
     %Baseflow.BasecampRecording{
       id: 258855865,
       status: "active",
-      created_at: "2016-10-12T21:54:42.058-04:00",
+      inserted_at: "2016-10-12T21:54:42.058-04:00",
       updated_at: "2016-10-12T21:54:42.067-04:00",
       type: "Question::Answer",
       url: "https://3.basecampapi.com/3320898/buckets/1636980/question_answers/258855865.json",
