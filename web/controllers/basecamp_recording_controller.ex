@@ -8,8 +8,9 @@ defmodule Baseflow.BasecampRecordingController do
     render(conn, "index.json", basecamp_recordings: basecamp_recordings)
   end
 
-  def create(conn, %{"basecamp_recording" => basecamp_recording_params}) do
-    changeset = BasecampRecording.changeset(%BasecampRecording{}, basecamp_recording_params)
+  def create(conn, %{"recording" => recording_params}) do
+    recording_params = map_params(recording_params)
+    changeset = BasecampRecording.changeset(%BasecampRecording{}, recording_params)
 
     case Repo.insert(changeset) do
       {:ok, basecamp_recording} ->
@@ -29,9 +30,10 @@ defmodule Baseflow.BasecampRecordingController do
     render(conn, "show.json", basecamp_recording: basecamp_recording)
   end
 
-  def update(conn, %{"id" => id, "basecamp_recording" => basecamp_recording_params}) do
+  def update(conn, %{"id" => id, "basecamp_recording" => recording_params}) do
+    recording_params = map_params(recording_params)
     basecamp_recording = Repo.get!(BasecampRecording, id)
-    changeset = BasecampRecording.changeset(basecamp_recording, basecamp_recording_params)
+    changeset = BasecampRecording.changeset(basecamp_recording, recording_params)
 
     case Repo.update(changeset) do
       {:ok, basecamp_recording} ->
@@ -51,5 +53,11 @@ defmodule Baseflow.BasecampRecordingController do
     Repo.delete!(basecamp_recording)
 
     send_resp(conn, :no_content, "")
+  end
+
+  defp map_params(recording_params) do
+    recording_params
+    |> Dict.put_new("basecamp_id", recording_params["id"])
+    |> Dict.delete("id")
   end
 end

@@ -13,10 +13,10 @@ defmodule Baseflow.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/api", Baseflow do
+  scope "/webhooks/basecamp", Baseflow do
     pipe_through :api
 
-    resources "/basecamp_recordings", BasecampRecordingController, except: [:new, :edit]   
+    resources "/recordings", BasecampRecordingController, except: [:new, :edit]   
   end
 
   scope "/", Baseflow do

@@ -2,6 +2,7 @@ defmodule Baseflow.BasecampRecordingControllerTest do
   use Baseflow.ConnCase
 
   alias Baseflow.BasecampRecording
+  @api_attrs %{app_url: "some content", id: 42, content: "some content", status: "some content", title: "some content", type: "some content", url: "some content"}
   @valid_attrs %{app_url: "some content", basecamp_id: 42, content: "some content", status: "some content", title: "some content", type: "some content", url: "some content"}
   @invalid_attrs %{}
 
@@ -34,19 +35,19 @@ defmodule Baseflow.BasecampRecordingControllerTest do
   end
 
   test "creates and renders resource when data is valid", %{conn: conn} do
-    conn = post conn, basecamp_recording_path(conn, :create), basecamp_recording: @valid_attrs
+    conn = post conn, basecamp_recording_path(conn, :create), recording: @api_attrs
     assert json_response(conn, 201)["data"]["id"]
     assert Repo.get_by(BasecampRecording, @valid_attrs)
   end
 
   test "does not create resource and renders errors when data is invalid", %{conn: conn} do
-    conn = post conn, basecamp_recording_path(conn, :create), basecamp_recording: @invalid_attrs
+    conn = post conn, basecamp_recording_path(conn, :create), recording: @invalid_attrs
     assert json_response(conn, 422)["errors"] != %{}
   end
 
   test "updates and renders chosen resource when data is valid", %{conn: conn} do
     basecamp_recording = Repo.insert! %BasecampRecording{}
-    conn = put conn, basecamp_recording_path(conn, :update, basecamp_recording), basecamp_recording: @valid_attrs
+    conn = put conn, basecamp_recording_path(conn, :update, basecamp_recording), basecamp_recording: @api_attrs
     assert json_response(conn, 200)["data"]["id"]
     assert Repo.get_by(BasecampRecording, @valid_attrs)
   end
