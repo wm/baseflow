@@ -23,10 +23,6 @@ defmodule Baseflow.Router do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :index
+    resources "/basecamp_recordings", BasecampRecordingController, except: [:new, :edit]   
   end
-
-  # Other scopes may use custom stacks.
-  # scope "/api", Baseflow do
-  #   pipe_through :api
-  # end
 end
