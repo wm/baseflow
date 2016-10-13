@@ -26,6 +26,7 @@ defmodule Baseflow.ConnCase do
       import Ecto.Query
 
       import Baseflow.Router.Helpers
+      import Baseflow.Factory
 
       # The default endpoint for testing
       @endpoint Baseflow.Endpoint

@@ -18,8 +18,11 @@ defmodule Baseflow.Mixfile do
   # Type `mix help compile.app` for more information.
   def application do
     [mod: {Baseflow, []},
-     applications: [:phoenix, :phoenix_pubsub, :phoenix_html, :cowboy, :logger, :gettext,
-                    :phoenix_ecto, :postgrex, :oauth2]]
+     applications: [
+       :phoenix, :phoenix_pubsub, :phoenix_html, :cowboy, :logger, :gettext,
+       :phoenix_ecto, :postgrex,
+       :oauth2, :ex_machina
+    ]]
   end
 
   # Specifies which paths to compile per environment.
@@ -40,6 +43,7 @@ defmodule Baseflow.Mixfile do
       {:gettext, "~> 0.11"},
       {:cowboy, "~> 1.0"},
       {:oauth2, "~> 0.8"},
+      {:ex_machina, "~> 1.0"},
    ]
   end
 
