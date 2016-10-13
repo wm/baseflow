@@ -1,10 +1,17 @@
 defmodule Baseflow.Chatter do
   @backends [Baseflow.Chatter.Flowdock]
 
+  # Backend
+  #
+  # Proxy to the specific backend (e.g. Flowdock, Logs, etc.)
   def start_link(backend, notification, ref, owner) do
     backend.start_link(notification, ref, owner)
   end
 
+  # Client (frontend)
+  #
+  # Publishes to all the backends via async by dynamically starting supervised
+  # children (e.g. Flowdock.start_link)
   def compute(notification, opts \\ []) do
     backends = opts[:backends] || @backends
 

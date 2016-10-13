@@ -1,9 +1,10 @@
 defmodule Baseflow.Chatter.Flowdock do
+  # Start the work
   def start_link(notification, ref, owner) do
-    Task.start_link(__MODULE__, :fetch, [notification, ref, owner])
+    Task.start_link(__MODULE__, :publish, [notification, ref, owner])
   end
 
-  def fetch(notification, ref, owner) do
+  def publish(notification, ref, owner) do
     # do something here to send data to Flowdock
   end
 end
