@@ -29,3 +29,36 @@
         "content": "<div><strong>Today:</strong></div><ul><li>Meetings: A; B; C.</li><li>Maker: A;B;C.</li></ul><div><strong>Yesterday:</strong></div><ul><li>Meetings: A; B; C.</li><li>Maker: A;B;C.</li></ul>"
     }
 }
+
+
+{
+  "id": 417564486,
+  "kind": "question_answer_created",
+  "details": {
+    "notified_recipient_ids": []
+  },
+  "created_at": "2016-10-15T15:40:19.362-04:00",
+  "recording": {
+    "id": 261456848,
+    "status": "active",
+    "created_at": "2016-10-15T15:40:19.340-04:00",
+    "updated_at": "2016-10-15T15:40:19.347-04:00",
+    "type": "Question::Answer",
+    "url": "https://3.basecampapi.com/3320898/buckets/1636980/question_answers/261456848.json",
+    "app_url": "https://3.basecamp.com/3320898/buckets/1636980/questions/258854860/answers/2016-10-15#__recording_261456848",
+    "parent": {
+      "id": 258854860,
+      "title": "What did you do yesterday, what are you doing today, and are there blockers?",
+      "type": "Question",
+      "url": "https://3.basecampapi.com/3320898/buckets/1636980/questions/258854860.json",
+      "app_url": "https://3.basecamp.com/3320898/buckets/1636980/questions/258854860"
+    },
+    "bucket": {
+      "id": 1636980,
+      "name": "Integration Test",
+      "type": "Project"
+    },
+    "title": "Answer to “What did you do yesterday, what are you doing today, and are there blockers?”",
+    "content": "<div><strong>Yesterday:</strong></div><ul><li>Meetings: Services for Teams discussion w/ Andrew; Conclave; Bouncah/Eligible API w Erin</li><li>Maker: Some documentaion clean up&gt;Hackfest driving/food; Team Shuffle; Services; Add 2017 Harken plans/locations to Bouncah; Tried to import test data into dev to test it. Have PHI concerns.</li></ul><div><strong>Today:</strong></div><ul><li>Meetings: 1-1 w/ Steve Z</li><li>Maker: Import new harken staging enrollments (pending approval from HIPAA team). Service arch document</li></ul><div><br></div>"
+  }
+}

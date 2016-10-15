@@ -9,6 +9,8 @@ defmodule Baseflow.BasecampRecording do
     field :app_url, :string
     field :title, :string
     field :content, :string
+    field :parent_id, :integer
+    field :parent_app_url, :string
 
     timestamps()
   end
@@ -18,7 +20,7 @@ defmodule Baseflow.BasecampRecording do
   """
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:basecamp_id, :status, :type, :url, :app_url, :title, :content])
-    |> validate_required([:basecamp_id, :status, :type, :url, :app_url, :title, :content])
+    |> cast(params, [:basecamp_id, :status, :type, :url, :app_url, :title, :content, :parent_id, :parent_app_url])
+    |> validate_required([:basecamp_id, :status, :type, :url, :app_url, :title, :content, :parent_id, :parent_app_url])
   end
 end
