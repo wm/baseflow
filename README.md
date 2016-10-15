@@ -1,20 +1,58 @@
 # Baseflow
 
-To start your Phoenix app:
+This is a simple Elixir Phoenix app that pipes Basecamp Webhooks to Flowdock. 
 
-  * Install dependencies with `mix deps.get`
-  * Create and migrate your database with `mix ecto.create && mix ecto.migrate`
-  * Install Node.js dependencies with `npm install`
-  * Start Phoenix endpoint with `mix phoenix.server`
+This toy application uses the [experimental GenStage
+behaviour](http://elixir-lang.org/blog/2016/07/14/announcing-genstage/). The
+motivation is two fold: 
 
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
+1. Pipe specific updates in Basecamp to specific Flowdock Inbox's
+2. To learn about Elixir, Phoenix patterns/behaviours.
 
-Ready to run in production? Please [check our deployment guides](http://www.phoenixframework.org/docs/deployment).
+I chose the GenStage behaviour to:
 
-## Learn more
+- have a simple broadcast API
+- allow concurrency
+- provide buffering (in case the processing of an event is slower than the
+  rate of incoming events)
 
-  * Official website: http://www.phoenixframework.org/
-  * Guides: http://phoenixframework.org/docs/overview
-  * Docs: https://hexdocs.pm/phoenix
-  * Mailing list: http://groups.google.com/group/phoenix-talk
-  * Source: https://github.com/phoenixframework/phoenix
+Currently it uses the default dispatcher but I toyed with using the
+BroadcastDispatcher to send to multiple channles (for example Slack, Flowdock,
+etc.)
+
+This app has two main parts: Web JSON API and Broadcaster.
+
+### The Web JSON API
+This is a simple create action that will accept JSON and create a
+Baseflow.Recording. It will then broadcast that recording to a given Flowdock
+flow.
+
+    Baseflow.Broadcaster.sync_notify({flow, recording})
+
+### The Broadcaster
+
+Using the GenStage behaviour we need to have the Broadcaster running and
+consumers subscribed. It has its own supervisor (StageSupervisor) to manage
+this.
+
+The StageSupervisor has the Broadcaster and two Consumers as children (we
+probably do not need multiple consumers here tbh).
+
+The consumers will take any events built up in the Broadcaster and process
+them. Events here are {flow_name, Baseflow.Recording} tuples. The recording is
+serialized into Flowdock format and then sent to Flowdock
+    
+    recording
+    |> Baseflow.RecordingTranslator.translate
+    |> Flowdock.post(flow)
+
+#### TODOs & Qs
+
+- Is sync_notify a valid name for an async process?
+- Is Broadcaster still valid since we are not using the BroadcastDispatcher?
+- Find a better name for RecordingTranslator (maybe just FlowdockSerializer)
+- Get rid of Ecto and saving the model to the db. No need for it
+- Write tests for (and implement)
+    - Flowdock
+    - Baseflow.RecordingTranslator
+- Connect the web portion to the Broadcaster

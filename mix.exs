@@ -44,6 +44,7 @@ defmodule Baseflow.Mixfile do
       {:cowboy, "~> 1.0"},
       {:oauth2, "~> 0.8"},
       {:ex_machina, "~> 1.0"},
+      {:gen_stage, "~> 0.4"},
    ]
   end
 

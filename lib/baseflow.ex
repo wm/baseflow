@@ -12,7 +12,7 @@ defmodule Baseflow do
       supervisor(Baseflow.Repo, []),
       # Start the endpoint when the application starts
       supervisor(Baseflow.Endpoint, []),
-      supervisor(Baseflow.Chatter.Supervisor, []),
+      supervisor(Baseflow.StageSupervisor, []),
       # Start your own worker by calling: Baseflow.Worker.start_link(arg1, arg2, arg3)
       # worker(Baseflow.Worker, [arg1, arg2, arg3]),
     ]
