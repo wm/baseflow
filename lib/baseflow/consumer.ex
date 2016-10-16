@@ -22,7 +22,7 @@ defmodule Baseflow.Consumer do
   def handle_events(events, _from, state) do
     for {flow_token, recording} <- events do
       recording
-      |> Baseflow.RecordingTranslator.translate
+      |> Baseflow.FlowDiscussion.from_basecamp_recording
       |> Flowdock.post(flow_token)
     end
     {:noreply, [], state}

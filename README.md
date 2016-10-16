@@ -66,7 +66,6 @@ delayed.
 
 #### TODOs & Qs
 
-- Find a better name for RecordingTranslator (maybe just FlowdockSerializer)
 - Write tests for (and implement)
     - Flowdock
     - Baseflow.RecordingTranslator

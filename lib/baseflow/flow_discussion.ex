@@ -1,5 +1,5 @@
-defmodule Baseflow.RecordingTranslator do
-  def translate(recording) do
+defmodule Baseflow.FlowDiscussion do
+  def from_basecamp_recording(recording) do
     # Hard coded until I can figure out how to get this from Basecamp
     # I have a support ticket open with them!
     author = %Flowdock.Author{name: "Will M", avatar: "https://avatars.githubusercontent.com/u/3017123?v=3"}
