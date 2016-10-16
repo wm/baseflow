@@ -63,9 +63,3 @@ Add a `Process.sleep(3000)` to the `Consumer.handle_events/3` to simulate a
 slow downstream API. Send a few requests to the server (in quick succession)
 and watch how quick they each respond even though the pushes to Flowdock as
 delayed.
-
-#### TODOs & Qs
-
-- Write tests for (and implement)
-    - Flowdock
-    - Baseflow.RecordingTranslator
