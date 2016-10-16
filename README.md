@@ -46,13 +46,23 @@ serialized into Flowdock format and then sent to Flowdock
     |> Baseflow.RecordingTranslator.translate
     |> Flowdock.post(flow)
 
+### Usage & Setup
+
+Once set up updates to configured threads will be pushed to Flowdock as a daily
+discussion. All updates during a day will be appended to the discussion. New
+disucssion will be created when there is an update.
+
+
+- Baseflow will need to be added to your orginization's Flowdock
+- You will need to add the integration to your flow (and copy the FLOW_TOKEN)
+- You will need to add a webhook on a Basecamp thread `https://<SERVER_URL>/webhooks/basecamp/recordings/<FLOW_TOKEN>`
+
 #### TODOs & Qs
 
 - Is sync_notify a valid name for an async process?
-- Is Broadcaster still valid since we are not using the BroadcastDispatcher?
+- Is Broadcaster a valid name since we are not using the BroadcastDispatcher?
 - Find a better name for RecordingTranslator (maybe just FlowdockSerializer)
 - Get rid of Ecto and saving the model to the db. No need for it
 - Write tests for (and implement)
     - Flowdock
     - Baseflow.RecordingTranslator
-- Connect the web portion to the Broadcaster
