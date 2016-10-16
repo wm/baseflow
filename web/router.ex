@@ -15,8 +15,7 @@ defmodule Baseflow.Router do
 
   scope "/webhooks/basecamp", Baseflow do
     pipe_through :api
-
-    resources "/recordings", BasecampRecordingController, except: [:new, :edit]   
+    post "/recordings/:flow_token", BasecampRecordingController, :create
   end
 
   scope "/", Baseflow do
