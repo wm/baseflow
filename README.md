@@ -57,12 +57,16 @@ disucssion will be created when there is an update.
 - You will need to add the integration to your flow (and copy the FLOW_TOKEN)
 - You will need to add a webhook on a Basecamp thread `https://<SERVER_URL>/webhooks/basecamp/recordings/<FLOW_TOKEN>`
 
+#### Validating GenStage does its job
+
+Add a `Process.sleep(3000)` to the `Consumer.handle_events/3` to simulate a
+slow downstream API. Send a few requests to the server (in quick succession)
+and watch how quick they each respond even though the pushes to Flowdock as
+delayed.
+
 #### TODOs & Qs
 
-- Is sync_notify a valid name for an async process?
-- Is Broadcaster a valid name since we are not using the BroadcastDispatcher?
 - Find a better name for RecordingTranslator (maybe just FlowdockSerializer)
-- Get rid of Ecto and saving the model to the db. No need for it
 - Write tests for (and implement)
     - Flowdock
     - Baseflow.RecordingTranslator
