@@ -7,7 +7,7 @@ defmodule Baseflow.StageSupervisor do
 
   def init(_opts) do
     children = [
-      worker(Baseflow.Broadcaster, []),
+      worker(Baseflow.Producer, []),
       worker(Baseflow.Consumer, [], id: 1),
       worker(Baseflow.Consumer, [], id: 2),
     ]

@@ -1,6 +1,6 @@
 alias Experimental.{GenStage}
 
-defmodule Baseflow.Broadcaster do
+defmodule Baseflow.Producer do
   @moduledoc """
   Using a GenStage for implementing a GenEvent manager
   replacement where each handler runs as a separate process.

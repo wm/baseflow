@@ -16,7 +16,7 @@ defmodule Baseflow.Consumer do
   def init(:ok) do
     # Starts a permanent subscription to the broadcaster
     # which will automatically start requesting items.
-    {:consumer, :ok, subscribe_to: [Baseflow.Broadcaster]}
+    {:consumer, :ok, subscribe_to: [Baseflow.Producer]}
   end
 
   def handle_events(events, _from, state) do
