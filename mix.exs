@@ -21,7 +21,7 @@ defmodule Baseflow.Mixfile do
      applications: [
        :phoenix, :phoenix_pubsub, :phoenix_html, :cowboy, :logger, :gettext,
        :phoenix_ecto, :postgrex,
-       :oauth2, :ex_machina
+       :oauth2, :ex_machina, :httpotion, :timex
     ]]
   end
 
@@ -45,6 +45,8 @@ defmodule Baseflow.Mixfile do
       {:oauth2, "~> 0.8"},
       {:ex_machina, "~> 1.0"},
       {:gen_stage, "~> 0.4"},
+      {:httpotion, "~> 3.0.2"},
+      {:timex, "~> 3.0"},
    ]
   end
 
