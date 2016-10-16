@@ -10,9 +10,7 @@ defmodule Baseflow.BasecampRecordingController do
     case Repo.insert(changeset) do
       {:ok, basecamp_recording} ->
 
-        basecamp_recording
-        |> Baseflow.RecordingTranslator.translate
-        |> Flowdock.post(flow_token)
+        Baseflow.Broadcaster.sync_notify({flow_token, basecamp_recording})
 
         conn
         |> put_status(:created)
