@@ -24,7 +24,6 @@ defmodule Baseflow.BasecampRecordingController do
   end
 
   defp map_params(recording_params) do
-    IO.puts "parent_id: #{recording_params["parent"]["id"]}"
     recording_params
     |> Dict.put_new("basecamp_id", recording_params["id"])
     |> Dict.delete("id")
