@@ -1,7 +1,8 @@
 defmodule Baseflow.BasecampRecording do
-  use Baseflow.Web, :model
+  use Ecto.Schema
+  import Ecto.Changeset
 
-  schema "basecamp_recordings" do
+  embedded_schema do
     field :basecamp_id, :integer
     field :status, :string
     field :type, :string

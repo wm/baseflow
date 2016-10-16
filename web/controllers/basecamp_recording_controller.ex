@@ -7,19 +7,17 @@ defmodule Baseflow.BasecampRecordingController do
     recording_params = map_params(recording_params)
     changeset = BasecampRecording.changeset(%BasecampRecording{}, recording_params)
 
-    case Repo.insert(changeset) do
-      {:ok, basecamp_recording} ->
+    if changeset.valid? do
+      basecamp_recording = Ecto.Changeset.apply_changes changeset
+      Baseflow.Producer.sync_notify({flow_token, basecamp_recording})
 
-        Baseflow.Producer.sync_notify({flow_token, basecamp_recording})
-
-        conn
-        |> put_status(:created)
-        |> put_resp_header("location", basecamp_recording_path(conn, :show, basecamp_recording))
-        |> render("show.json", basecamp_recording: basecamp_recording)
-      {:error, changeset} ->
-        conn
-        |> put_status(:unprocessable_entity)
-        |> render(Baseflow.ChangesetView, "error.json", changeset: changeset)
+      conn
+      |> put_status(:accepted)
+      |> render("show.json", basecamp_recording: basecamp_recording)
+    else
+      conn
+      |> put_status(:unprocessable_entity)
+      |> render(Baseflow.ChangesetView, "error.json", changeset: changeset)
     end
   end
 
