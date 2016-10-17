@@ -7,7 +7,7 @@ use Mix.Config
 
 # General application configuration
 config :baseflow,
-  ecto_repos: [Baseflow.Repo]
+  ecto_repos: []
 
 # Configures the endpoint
 config :baseflow, Baseflow.Endpoint,

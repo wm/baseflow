@@ -1,4 +1,4 @@
-defmodule Baseflow.ModelCase do
+defmodule Baseflow.SchemaCase do
   @moduledoc """
   This module defines the test case to be used by
   model tests.
@@ -16,22 +16,14 @@ defmodule Baseflow.ModelCase do
 
   using do
     quote do
-      alias Baseflow.Repo
-
       import Ecto
       import Ecto.Changeset
       import Ecto.Query
-      import Baseflow.ModelCase
+      import Baseflow.SchemaCase
     end
   end
 
   setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(Baseflow.Repo)
-
-    unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(Baseflow.Repo, {:shared, self()})
-    end
-
     :ok
   end
 

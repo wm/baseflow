@@ -20,11 +20,6 @@ defmodule Baseflow.ChannelCase do
       # Import conveniences for testing with channels
       use Phoenix.ChannelTest
 
-      alias Baseflow.Repo
-      import Ecto
-      import Ecto.Changeset
-      import Ecto.Query
-
 
       # The default endpoint for testing
       @endpoint Baseflow.Endpoint
@@ -32,12 +27,6 @@ defmodule Baseflow.ChannelCase do
   end
 
   setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(Baseflow.Repo)
-
-    unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(Baseflow.Repo, {:shared, self()})
-    end
-
     :ok
   end
 end

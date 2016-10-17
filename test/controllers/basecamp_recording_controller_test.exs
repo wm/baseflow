@@ -10,10 +10,10 @@ defmodule Baseflow.BasecampRecordingControllerTest do
     {:ok, conn: put_req_header(conn, "accept", "application/json")}
   end
 
-  test "creates and renders resource when data is valid", %{conn: conn} do
+  test "Pushes the recording to Producer", %{conn: conn} do
     conn = post conn, "/webhooks/basecamp/recordings/123123", recording: @api_attrs
-    assert json_response(conn, 201)["data"]["id"]
-    assert Repo.get_by(BasecampRecording, @valid_attrs)
+    assert json_response(conn, 202)["data"]["basecamp_id"]
+    # missing assert
   end
 
   test "does not create resource and renders errors when flow_token is missing", %{conn: conn} do

@@ -30,7 +30,6 @@ defmodule Baseflow.Web do
     quote do
       use Phoenix.Controller
 
-      alias Baseflow.Repo
       import Ecto
       import Ecto.Query
 
@@ -65,7 +64,6 @@ defmodule Baseflow.Web do
     quote do
       use Phoenix.Channel
 
-      alias Baseflow.Repo
       import Ecto
       import Ecto.Query
       import Baseflow.Gettext

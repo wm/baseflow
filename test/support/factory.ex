@@ -1,6 +1,4 @@
 defmodule Baseflow.Factory do
-  use ExMachina.Ecto, repo: Baseflow.Repo
-
   def basecamp_recording_factory do
     %Baseflow.BasecampRecording{
       id: 258855865,

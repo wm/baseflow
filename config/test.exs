@@ -8,11 +8,3 @@ config :baseflow, Baseflow.Endpoint,
 
 # Print only warnings and errors during test
 config :logger, level: :warn
-
-# Configure your database
-config :baseflow, Baseflow.Repo,
-  adapter: Ecto.Adapters.Postgres,
-  database: "baseflow_test",
-  hostname: "localhost",
-  port: "15432",
-  pool: Ecto.Adapters.SQL.Sandbox

@@ -20,7 +20,6 @@ defmodule Baseflow.Mixfile do
     [mod: {Baseflow, []},
      applications: [
        :phoenix, :phoenix_pubsub, :phoenix_html, :cowboy, :logger, :gettext,
-       :phoenix_ecto, :postgrex,
        :oauth2, :ex_machina, :httpotion, :timex
     ]]
   end

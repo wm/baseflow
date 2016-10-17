@@ -1,5 +1,5 @@
 defmodule Baseflow.BasecampRecordingTest do
-  use Baseflow.ModelCase
+  use Baseflow.SchemaCase
 
   alias Baseflow.BasecampRecording
 
